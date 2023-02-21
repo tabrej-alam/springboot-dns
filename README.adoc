@@ -1,0 +1,18 @@
+= spring-boot-thread-local
+
+This project is a Small Spring boot rest project to demostrate how to use ThreadLocal in not native way in Spring boot applications
+
+== Thread Local in Java Springboot
+
+The ThreadLocal class in Java enables you to create variables that can only be read and written by the same thread. Thus, even if two threads are executing the same code, and the code has a reference to a ThreadLocal variable, then the two threads cannot see each other's ThreadLocal variables.
+
+In this example we are going to create custom String Threadlocal into Spring boot application to demostrate how a Treadlocal class has the same value between request-response servlet lifecycle.
+
+We have created custom servlet filter class named CustomFilter (filter package). This class filter every http call make to the api.
+
+3 typical layers controller-service-repository was created to log this value to be able to demostrate that it is not neccesary to
+pass the value between method: this value is stored at the same thread so it is accesible for every layers.
+
+
+To be able to run the Spring boot application write inside a terminal`` *mvn spring-boot:run*`` or if you a pro developer and you use intellij run inside the ide.
+Open you browser and type "http://localhost:8080/api/v1/person" and your logs will be shown with correlationId value stored inside RequestContext.
